@@ -1,2 +1,13 @@
 # Cache-Simulator
 A 32 bit Cache simulator built using Java
+For this we have taken 2 primary inputs which are Cache Size and Block Size. These are required to implement the 3 methods of Direct Mapping, Fully Associative mapping and set associative cache. We have simulated Cache of a 32 bit system. 
+For the primary inputs, we are taking Cache size and Block size in bytes. The inputs are all assumed to be in power of 2, if wrong input is entered then take the minimum number more than the input that has a power of 2. We first find the offset, size of tag address and the no of blocks in the cache by using standard formulas. This can be easily done by using standard formulas. The number of blocks can be found out by simply dividing the Cache size by Block Size. For this, we must ensure that both the entities are taken in the same units, so we do necessary conversion in our code. Next we find the offset, so when we represent our block size as 2^n in bytes, then n bits are the offset. And 32-n gives us the tag address. Note this tag address may be further divided into more parts in case we are using direct mapping or set associative mapping.
+After taking the initial inputs, the program now pops an option to choose 1 out of the following 3 methods
+Fully Associative Mapping
+Direct Mapping
+Set associative mapping.
+Next the program asks for the number of input queries.
+After you select a Mapping method, you are free to execute any of the above 3 commands by choosing an option respectively.
+Now if you have chosen the Write option, then you need two give two space separated outputs, address and data. Address has to be a 32 bit binary address since its a 32 bit machine and data should be in decimal format. The output for it will be a message telling you whether it was a write hit/miss and that cache has been updated. Also if a Block was replaced due to using up of all cache then we would print the tag that was evicted following the LRU policy. A HIT/MISS will be decided by the fact of whether the tag was found or not.
+If you have chosen the read command, then you will have to enter the address whose contents you want to read. And you will be shown the content of the address  as the output. A HIT/MISS will be decided by the fact of whether the tag was found or not. Hence it is very much possible that an offset corresponding to a tag would be NULL (or0 as stored in our program). In this case also, it would be a Cache Hit however data will be 0 (or NULL)
+If you choose the option of printing the cache then you will be shown all the contents present in the cache( only those offsets which have data will be shown).
